@@ -8,11 +8,22 @@ defineSupportCode(function({Given, When, Then}) {
 
   When('I guess {string}', function (string, callback) {
     // Write code here that turns the phrase above into concrete actions
-    callback(null, 'pending');
+    this.browser.fill('#guess', string);
+    this.browser.document.forms[0].submit();
   });
 
-  Then('I should see {string} within {string}', function (string, string2, callback) {
+  Then('I should see {string}', function (string, callback) {
     // Write code here that turns the phrase above into concrete actions
-    callback(null, 'pending');
+     // get the text of the body
+    var tbody = this.browser.text('body');
+
+    // search if the text exists inside the body text
+    if (body.search(string) != -1) {
+     // text exists
+     callback();
+    } else {
+     // throw an error for missing text
+     callback(new Error('Expected to see the text: ' + arg1));
+    }
   });
 });

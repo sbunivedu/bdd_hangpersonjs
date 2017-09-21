@@ -6,6 +6,6 @@ Feature: guess correct letter
 
 Scenario: guess correct letter that occurs once
 
-  Given I start a new game with word "garply"
+  #Given I start a new game with word "garply"
   When I guess "r"
-  Then I should see "r" within "span.word"
+  Then I should see "--r---"
